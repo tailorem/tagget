@@ -1,10 +1,7 @@
-import { Instance, flow, getParent, types } from "mobx-state-tree";
+import { Instance, flow, getParent, getSnapshot, types } from "mobx-state-tree";
 import { IAuthStore } from "./authStore";
 import { IAppStore } from "./appStore";
-
-export const user = types.model("User", {
-  name: types.string,
-});
+import { user } from "./user";
 
 export const userStore = types
   .model("UserStore", {
@@ -20,9 +17,11 @@ export const userStore = types
       });
 
       const json = yield result.json();
-      console.log(json);
-      return json;
+
+      if (!!json.display_name) {
+        self.currentUser = json;
+      }
     }),
   }));
 
-export interface IAuthStoreModel extends Instance<typeof userStore> {}
+export interface IUserStore extends Instance<typeof userStore> {}

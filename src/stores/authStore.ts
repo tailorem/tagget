@@ -1,8 +1,9 @@
-import { REDIRECT_URI, SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
+import { SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
 import { generateCodeVerifier, generateCodeChallenge } from "@/helpers";
 import { Instance, flow, types } from "mobx-state-tree";
 
 const SPOTIFY_CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || "";
+const REDIRECT_URI = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
 
 export const authStoreInitialState = {
   codeChallenge: "",
