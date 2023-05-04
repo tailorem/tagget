@@ -34,6 +34,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["autoprefixer", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:10.4.14"],\
             ["eslint", "npm:8.38.0"],\
             ["eslint-config-next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
+            ["mobx", "npm:6.9.0"],\
+            ["mobx-react-lite", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:3.4.3"],\
+            ["mobx-state-tree", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:5.1.8"],\
             ["next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
             ["postcss", "npm:8.4.21"],\
             ["react", "npm:18.2.0"],\
@@ -3134,6 +3137,71 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["mobx", [\
+        ["npm:6.9.0", {\
+          "packageLocation": "./.yarn/cache/mobx-npm-6.9.0-4301e66d80-ae03e95334.zip/node_modules/mobx/",\
+          "packageDependencies": [\
+            ["mobx", "npm:6.9.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["mobx-react-lite", [\
+        ["npm:3.4.3", {\
+          "packageLocation": "./.yarn/cache/mobx-react-lite-npm-3.4.3-59e324faf3-60a2580eb9.zip/node_modules/mobx-react-lite/",\
+          "packageDependencies": [\
+            ["mobx-react-lite", "npm:3.4.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:3.4.3", {\
+          "packageLocation": "./.yarn/__virtual__/mobx-react-lite-virtual-282aef9e70/0/cache/mobx-react-lite-npm-3.4.3-59e324faf3-60a2580eb9.zip/node_modules/mobx-react-lite/",\
+          "packageDependencies": [\
+            ["mobx-react-lite", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:3.4.3"],\
+            ["@types/mobx", null],\
+            ["@types/react", "npm:18.0.35"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["@types/react-native", null],\
+            ["mobx", "npm:6.9.0"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:18.2.0"],\
+            ["react-native", null]\
+          ],\
+          "packagePeers": [\
+            "@types/mobx",\
+            "@types/react-dom",\
+            "@types/react-native",\
+            "@types/react",\
+            "mobx",\
+            "react-dom",\
+            "react-native",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["mobx-state-tree", [\
+        ["npm:5.1.8", {\
+          "packageLocation": "./.yarn/cache/mobx-state-tree-npm-5.1.8-c84fa0cfca-251e69a17d.zip/node_modules/mobx-state-tree/",\
+          "packageDependencies": [\
+            ["mobx-state-tree", "npm:5.1.8"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:5.1.8", {\
+          "packageLocation": "./.yarn/__virtual__/mobx-state-tree-virtual-5ff9d1e428/0/cache/mobx-state-tree-npm-5.1.8-c84fa0cfca-251e69a17d.zip/node_modules/mobx-state-tree/",\
+          "packageDependencies": [\
+            ["mobx-state-tree", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:5.1.8"],\
+            ["@types/mobx", null],\
+            ["mobx", "npm:6.9.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/mobx",\
+            "mobx"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ms", [\
         ["npm:2.1.2", {\
           "packageLocation": "./.yarn/cache/ms-npm-2.1.2-ec0c1512ff-673cdb2c31.zip/node_modules/ms/",\
@@ -4350,6 +4418,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["autoprefixer", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:10.4.14"],\
             ["eslint", "npm:8.38.0"],\
             ["eslint-config-next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
+            ["mobx", "npm:6.9.0"],\
+            ["mobx-react-lite", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:3.4.3"],\
+            ["mobx-state-tree", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:5.1.8"],\
             ["next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
             ["postcss", "npm:8.4.21"],\
             ["react", "npm:18.2.0"],\
