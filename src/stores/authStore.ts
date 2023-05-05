@@ -89,6 +89,7 @@ export const authStore = types
       if (!!access_token) {
         self.accessToken = access_token;
         // TODO: create a serverless function for handling authentication/cookies
+        // TODO: move to helper function
         const expiry = dayjs.utc().add(30, "m");
         document.cookie = `token=${access_token}; SameSite=Strict; Expires=${expiry}`;
       }
