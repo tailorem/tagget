@@ -32,6 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.35"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["autoprefixer", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:10.4.14"],\
+            ["dayjs", "npm:1.11.7"],\
             ["eslint", "npm:8.38.0"],\
             ["eslint-config-next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
             ["mobx", "npm:6.9.0"],\
@@ -1148,6 +1149,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/damerau-levenshtein-npm-1.0.8-bda7311c69-d240b77575.zip/node_modules/damerau-levenshtein/",\
           "packageDependencies": [\
             ["damerau-levenshtein", "npm:1.0.8"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dayjs", [\
+        ["npm:1.11.7", {\
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.11.7-d5cd5b2919-5003a7c1dd.zip/node_modules/dayjs/",\
+          "packageDependencies": [\
+            ["dayjs", "npm:1.11.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4416,6 +4426,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.35"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["autoprefixer", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:10.4.14"],\
+            ["dayjs", "npm:1.11.7"],\
             ["eslint", "npm:8.38.0"],\
             ["eslint-config-next", "virtual:b79d994664ddd13627e6ce23ec089c376c55af611f696a9edce3a13c14b76d438451c62a2f805994f93704852223b4415b61eeff869966f3150289951691ac97#npm:13.3.0"],\
             ["mobx", "npm:6.9.0"],\

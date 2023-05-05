@@ -1,20 +1,27 @@
 import { useStore } from "@/stores/appStore";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
-
-// TODO: Reroute to login if not authenticated
+import { useRouter } from "next/router";
 
 const Dashboard = () => {
   const {
+    authStore,
     userStore,
     userStore: { currentUser },
   } = useStore();
-
-  // console.log(document.cookie);
+  const router = useRouter();
 
   useEffect(() => {
-    userStore.getProfile();
-  }, [userStore]);
+    if (authStore.accessToken) {
+      userStore.getProfile();
+    } else {
+      authStore.retrieveAccessToken();
+
+      if (!authStore.accessToken) {
+        router.push("/");
+      }
+    }
+  }, [authStore, authStore.accessToken, userStore, router]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -23,26 +30,26 @@ const Dashboard = () => {
           Logged in as:{" "}
           <span id="displayName">{currentUser?.display_name}</span>
         </h2>
-        <span id="avatar"></span>
+        {/* <span id="avatar"></span> */}
         <ul>
-          <li>
+          {/* <li>
             User ID: <span id="id"></span>
           </li>
           <li>
             Email: <span id="email"></span>
-          </li>
+          </li> */}
           <li>
             Spotify URI:{" "}
             <a id="uri" href="#">
               {currentUser?.uri}
             </a>
           </li>
-          <li>
+          {/* <li>
             Link: <a id="url" href="#"></a>
           </li>
           <li>
             Profile Image: <span id="imgUrl"></span>
-          </li>
+          </li> */}
         </ul>
       </section>
     </main>

@@ -9,19 +9,25 @@ const Callback = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const navigateAfterAuth = async () => {
-      if (!didCheckAuth) {
-        setDidCheckAuth(true);
+    if (!didCheckAuth) {
+      setDidCheckAuth(true);
 
-        const isAuthenticated = await authStore.checkAuth();
+      const checkAuth = async () => {
+        // obtain authorization code
+        authStore.obtainAuthorizationCode();
 
-        if (isAuthenticated) {
-          router.push("dashboard");
+        // fetch access token
+        if (authStore.authorizationCode) {
+          await authStore.fetchAccessToken();
         }
-      }
-    };
 
-    navigateAfterAuth();
+        // if successful, go to dashboard
+        // else, return to landing
+        router.replace(authStore.accessToken ? "/dashboard" : "/");
+      };
+
+      checkAuth();
+    }
   }, [didCheckAuth, authStore, router]);
 
   return null;

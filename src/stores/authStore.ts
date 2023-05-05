@@ -1,6 +1,11 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
 import { generateCodeVerifier, generateCodeChallenge } from "@/helpers";
 import { Instance, flow, types } from "mobx-state-tree";
+import { parseCookie } from "@/helpers/auth/parseCookie";
+
+dayjs.extend(utc);
 
 const SPOTIFY_CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || "";
 const REDIRECT_URI = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
@@ -36,6 +41,29 @@ export const authStore = types
       window.location.replace(`${SPOTIFY_AUTH_URL}?${_params.toString()}`);
     }),
 
+    obtainAuthorizationCode() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (code) {
+        self.authorizationCode = code;
+      }
+
+      return self.authorizationCode;
+    },
+
+    /** Retrieve access token from cookies */
+    retrieveAccessToken() {
+      const cookie = document.cookie;
+      console.log("cookie", cookie);
+
+      const token = cookie && parseCookie(cookie).token;
+
+      if (token) {
+        self.accessToken = token;
+      }
+    },
+
     fetchAccessToken: flow(function* () {
       const verifier = localStorage.getItem("verifier") || "";
 
@@ -57,24 +85,26 @@ export const authStore = types
       if (!!access_token) {
         self.accessToken = access_token;
         // TODO: create a serverless function for handling authentication/cookies
-        document.cookie = `token=${access_token}; SameSite=Strict`;
+        const expiry = dayjs.utc().add(30, "m");
+        document.cookie = `token=${access_token}; SameSite=Strict; Expires=${expiry}`;
       }
     }),
   }))
   .actions((self) => ({
-    checkAuth: flow(function* () {
-      const params = new URLSearchParams(window.location.search);
-      self.authorizationCode = params.get("code");
+    authenticate: flow(function* (onSuccess: () => void) {
+      self.obtainAuthorizationCode();
 
       if (!self.authorizationCode) {
         self.redirectToAuthCodeFlow();
       } else {
+        console.log("fetching access token");
+
         yield self.fetchAccessToken();
 
-        return true;
+        if (self.accessToken) {
+          onSuccess?.();
+        }
       }
-
-      return false;
     }),
   }));
 
