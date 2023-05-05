@@ -1,9 +1,13 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
-import { generateCodeVerifier, generateCodeChallenge } from "@/helpers";
+import {
+  generateCodeVerifier,
+  generateCodeChallenge,
+  eraseCookie,
+  parseCookie,
+} from "@/helpers";
 import { Instance, applySnapshot, flow, types } from "mobx-state-tree";
-import { parseCookie } from "@/helpers/auth/parseCookie";
 
 dayjs.extend(utc);
 
@@ -91,7 +95,7 @@ export const authStore = types
     }),
 
     logout() {
-      document.cookie = "token=; Max-Age=-99999999;";
+      eraseCookie("token");
       // TODO: clear all stores
       applySnapshot(self, authStoreInitialState);
     },
