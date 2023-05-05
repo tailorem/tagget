@@ -52,6 +52,7 @@ const Dashboard = () => {
           </li> */}
         </ul>
       </section>
+      <button onClick={(e) => authStore.logout()}>LOG OUT</button>
     </main>
   );
 };

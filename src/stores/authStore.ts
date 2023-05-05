@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
 import { generateCodeVerifier, generateCodeChallenge } from "@/helpers";
-import { Instance, flow, types } from "mobx-state-tree";
+import { Instance, applySnapshot, flow, types } from "mobx-state-tree";
 import { parseCookie } from "@/helpers/auth/parseCookie";
 
 dayjs.extend(utc);
@@ -89,6 +89,12 @@ export const authStore = types
         document.cookie = `token=${access_token}; SameSite=Strict; Expires=${expiry}`;
       }
     }),
+
+    logout() {
+      document.cookie = "token=; Max-Age=-99999999;";
+      // TODO: clear all stores
+      applySnapshot(self, authStoreInitialState);
+    },
   }))
   .actions((self) => ({
     authenticate: flow(function* (onSuccess: () => void) {
@@ -97,8 +103,6 @@ export const authStore = types
       if (!self.authorizationCode) {
         self.redirectToAuthCodeFlow();
       } else {
-        console.log("fetching access token");
-
         yield self.fetchAccessToken();
 
         if (self.accessToken) {
@@ -106,6 +110,10 @@ export const authStore = types
         }
       }
     }),
+
+    reauthenticate() {
+      // TODO: refresh access token
+    },
   }));
 
 export interface IAuthStore extends Instance<typeof authStore> {}
