@@ -6,24 +6,26 @@ const chance = new Chance();
 describe("log function", () => {
   const logSpy = jest.spyOn(global.console, "log");
 
-  it("should run successfully when called with no arguments", () => {
+  it("should call console.log with no arguments", () => {
     log();
 
     expect(logSpy).toHaveBeenCalledWith();
   });
 
-  it("should run successfully when called with a single argument", () => {
+  it("should call console.log with a single argument", () => {
     const randomWord = chance.word();
     log(randomWord);
 
     expect(logSpy).toHaveBeenCalledWith(randomWord);
   });
 
-  it("should run successfully when called with multiple arguments", () => {
+  it("should call console.log with multiple arguments", () => {
     const randomWord = chance.word();
     const randomNumber = chance.integer();
-    log(randomWord, randomNumber);
+    const randomObject = { [chance.word()]: chance.word() };
 
-    expect(logSpy).toHaveBeenCalledWith(randomWord, randomNumber);
+    log(randomWord, randomNumber, randomObject);
+
+    expect(logSpy).toHaveBeenCalledWith(randomWord, randomNumber, randomObject);
   });
 });

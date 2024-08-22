@@ -1,13 +1,10 @@
-export const generateCodeVerifier = (length: number) => {
-  let randomString = "";
-  const possibleCharacters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+import { generateRandomString } from "../primitives";
 
-  for (let i = 0; i < length; i++) {
-    randomString += possibleCharacters.charAt(
-      Math.floor(Math.random() * possibleCharacters.length)
-    );
+// TODO: add comments
+export const generateCodeVerifier = (length: number = 128) => {
+  if (!length || length < 43 || length > 128) {
+    throw new Error("`length` must be between 43 and 128");
   }
 
-  return randomString;
+  return generateRandomString(length);
 };
