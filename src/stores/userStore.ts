@@ -16,6 +16,11 @@ export const userStore = types
         headers: { Authorization: `Bearer ${authStore.accessToken}` },
       });
 
+      if (result.status != 200) {
+        console.warn("unable to ping Spotify API, likely this app is still in development and you haven't been granted access!")
+        return;
+      }
+
       const json = yield result.json();
 
       if (!!json.display_name) {
