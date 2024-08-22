@@ -1,13 +1,10 @@
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { SPOTIFY_API_URL, SPOTIFY_AUTH_URL } from "@/constants";
 import {
-  generateCodeVerifier,
-  generateCodeChallenge,
-  eraseCookie,
-  parseCookie,
+  eraseCookie, generateCodeChallenge, generateCodeVerifier, parseCookie
 } from "@/helpers";
-import { Instance, applySnapshot, flow, types } from "mobx-state-tree";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import { applySnapshot, flow, Instance, types } from "mobx-state-tree";
 
 dayjs.extend(utc);
 
@@ -59,7 +56,7 @@ export const authStore = types
     /** Retrieve access token from cookies */
     retrieveAccessToken() {
       const cookie = document.cookie;
-      console.log("cookie", cookie);
+      console.log("cookie retrieved", cookie);
 
       const token = cookie && parseCookie(cookie).token;
 

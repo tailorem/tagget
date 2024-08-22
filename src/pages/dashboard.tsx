@@ -1,7 +1,7 @@
 import { useStore } from "@/stores/appStore";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const {
@@ -21,6 +21,8 @@ const Dashboard = () => {
         router.push("/");
       }
     }
+    
+    console.log("user", userStore.currentUser);
   }, [authStore, authStore.accessToken, userStore, router]);
 
   return (
