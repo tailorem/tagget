@@ -31,4 +31,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Dependency notes
 
-eslint is stuck at v8 as eslint-config-airbnb requires this version at this time.
+eslint is stuck at v8 as eslint-config-airbnb requires this version as of August 2024.
